@@ -51,9 +51,6 @@ concatValues(personOptionalDetails);
 
 //task3 
 namespace ObjectUtil {
-    export type ObjectOfObject = {
-      [key: string]: any;
-    };
     export function concatValues(objs: any): string {
         let result = '';
         function objectCheck(obj: any) {

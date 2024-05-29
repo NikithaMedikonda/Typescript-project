@@ -1,3 +1,14 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var studOne = {
     name: "nikki",
     age: 20,
@@ -13,9 +24,7 @@ var toUpdate = {
     email: "nikitha@gmail.com"
 };
 function updateStudent(studOne, toUpdate) {
-    for (var key in toUpdate) {
-        studOne["".concat(key)] = toUpdate[key];
-    }
+    return __assign(__assign({}, studOne), toUpdate);
     console.log("pick");
     console.log(studOne);
 }
@@ -41,9 +50,10 @@ var emp3 = {
 };
 console.log(emp3);
 var employees = [emp1, emp2, emp3];
-function isLead(employee, employees) {
-    for (var i = 0; i < employees.length; i++) {
-        if (employees[i].lead === employee) {
+function isLeadRecursive(employee, employees) {
+    for (var _i = 0, employees_1 = employees; _i < employees_1.length; _i++) {
+        var emp = employees_1[_i];
+        if (emp.lead === employee || (emp.lead && isLeadRecursive(employee, [emp.lead]))) {
             return true;
         }
     }
@@ -51,7 +61,7 @@ function isLead(employee, employees) {
 }
 function printLeadStatus(employees) {
     employees.forEach(function (employee) {
-        if (isLead(employee, employees)) {
+        if (isLeadRecursive(employee, employees)) {
             console.log("".concat(employee.name, " is Lead"));
         }
         else {

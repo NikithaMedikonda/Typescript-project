@@ -28,9 +28,7 @@ const toUpdate: toChange = {
 }
 
 function updateStudent(studOne: Student,toUpdate: toChange){
-    for(const key in toUpdate){
-        studOne[`${key}`] = toUpdate[key];
-    }
+    return { ...studOne, ...toUpdate };
     console.log("pick")
     console.log(studOne)
 }
@@ -70,21 +68,24 @@ const emp3: Employee =  {
 console.log(emp3);
 
 const employees: Employee[] = [emp1, emp2, emp3];
-function isLead(employee: Employee, employees: Employee[]): boolean {
-    for (let i = 0; i < employees.length; i++) {
-        if (employees[i].lead === employee) {
+
+function isLeadRecursive(employee: Employee, employees: Employee[]): boolean {
+    for (let emp of employees) {
+        if (emp.lead === employee || (emp.lead && isLeadRecursive(employee, [emp.lead]))) {
             return true;
         }
     }
     return false;
 }
+
 function printLeadStatus(employees: Employee[]): void {
     employees.forEach(employee => {
-        if (isLead(employee, employees)) {
+        if (isLeadRecursive(employee, employees)) {
             console.log(`${employee.name} is Lead`);
         } else {
             console.log(`${employee.name} is not Lead`);
         }
     });
 }
+
 printLeadStatus(employees);

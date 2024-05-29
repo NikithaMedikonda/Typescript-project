@@ -97,6 +97,31 @@ button {
 .footer {
     text-align: center;
 }
+
+#hideCheckbox {
+    display: none;
+}
+
+#hideCheckbox + label {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}
+
+#hideCheckbox:checked + label {
+    background-color: #6c757d;
+}
+
+#hideCheckbox:disabled + label {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 @media only screen and (max-width: 600px) {
     .count{
       display:flex;
