@@ -1,4 +1,4 @@
-type courses = "HTML" | "CSS" | "Javascript" | "TypeScript"
+type CourseList = "HTML" | "CSS" | "Javascript" | "TypeScript"
 
 type address_type = {
     city: string;
@@ -10,7 +10,7 @@ interface student_interface {
     name: string;
     age: number;
     email: string;
-    interested_courses: courses[]
+    interested_courses: CourseList[]
     address: address_type;
 }
 
@@ -18,7 +18,7 @@ type student_type = {
     name: string;
     age: number;
     email: string;
-    interested_courses: courses[]
+    interested_courses: CourseList[]
     address: address_type;
 }
 

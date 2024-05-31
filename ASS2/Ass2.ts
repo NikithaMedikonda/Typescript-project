@@ -1,19 +1,19 @@
 import { value } from './utils';
 
-type course = "HTML" | "CSS" | "Javascript" | "TypeScript" ;
+type CourseList = "HTML" | "CSS" | "Javascript" | "TypeScript" ;
 
 class Student {
     name: string; 
     age: number;
     email: string;
-    courseList: course[];
+    courseList: CourseList[];
     address: {
         city: string;
         state: string;
         pincode: number;
     }
     constructor(name: string, age: number, email: string, 
-        courseList: course[], city: string, state: string, pincode: number)
+        courseList: CourseList[], city: string, state: string, pincode: number)
       {
         this.name = name;
         this.age = age;
@@ -85,7 +85,7 @@ const studentpick: Pick<Student1, "name" | "age"> = {
     age: 25
 };
 
-const courserecord: Record<course, number> = {
+const courserecord: Record<CourseList, number> = {
     HTML: 1,
     CSS: 2,
     Javascript:3,

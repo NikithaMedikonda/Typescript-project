@@ -20,14 +20,14 @@ const studOne: Student = {
     }
 }
 
-type toChange = Pick<Student,"name" | "email">
+type ToChange = Pick<Student,"name" | "email">
 
-const toUpdate: toChange = {
+const toUpdate: ToChange = {
     name : "Nikitha",
     email:"nikitha@gmail.com"
 }
 
-function updateStudent(studOne: Student,toUpdate: toChange){
+function updateStudent(studOne: Student,toUpdate: ToChange){
     return { ...studOne, ...toUpdate };
     console.log("pick")
     console.log(studOne)
@@ -48,30 +48,35 @@ type Employee = {
     lead?: Employee;
 }
 
-const emp1: Employee = {
-    name : "nikki",
-    e_id : 1 
-}
-
-const emp2: Employee =  {
-    name : "usha",
-    e_id : 2,
-    lead : emp1
-}
-
-const emp3: Employee =  {
-    name : "mamatha",
-    e_id : 3,
-    lead : emp2
-}
-
-console.log(emp3);
-
-const employees: Employee[] = [emp1, emp2, emp3];
+const employees: Employee[] = [
+    {
+        name: "Nikitha",
+        e_id: 1,
+        lead: {
+            name: "Mamatha",
+            e_id: 2,
+        }
+    },
+    {
+        name: "Usha",
+        e_id: 3,
+        lead: {
+            name: "Varun",
+            e_id: 4,
+            lead: {
+                name: "Chinni",
+                e_id: 5,
+            }
+        }
+    }
+];
 
 function isLeadRecursive(employee: Employee, employees: Employee[]): boolean {
     for (let emp of employees) {
-        if (emp.lead === employee || (emp.lead && isLeadRecursive(employee, [emp.lead]))) {
+        if (emp.lead === employee) {
+            return true;
+        }
+        if (emp.lead && isLeadRecursive(employee, [emp.lead])) {
             return true;
         }
     }
